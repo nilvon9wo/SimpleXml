@@ -2,13 +2,9 @@ public class SXML_ElementSimpleNode implements SXML_SimpleNodeIntf {
     String nodeName;
     SXML_SimpleNodeIntf content;
 
-    public SXML_ElementSimpleNode(String nodeName) {
+    public SXML_ElementSimpleNode(String nodeName, SXML_SimpleNodeIntf content) {
         this.nodeName = nodeName;
-    }
-
-    public SXML_ElementSimpleNode setContent(SXML_SimpleNodeIntf content) {
         this.content = content;
-        return this;
     }
 
     public Dom.XmlNode toXmlNode(Dom.XmlNode outerNode) {
