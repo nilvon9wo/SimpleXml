@@ -1,4 +1,4 @@
-public class SXML_TextSimpleNode implements SXML_SimpleNodeIntf {
+public class SXML_TextSimpleNode implements SXML_SimpleNodeBuilderIntf, SXML_SimpleDocumentBuilderIntf {
     String nodeName;
     String content;
 
@@ -12,5 +12,12 @@ public class SXML_TextSimpleNode implements SXML_SimpleNodeIntf {
         Dom.XmlNode innerNode = outerNode.getChildElement(this.nodeName, null)
             .addTextNode(this.content);
         return innerNode;
+    }
+
+    public Dom.Document toXmlDocument() {
+        Dom.Document document = new Dom.Document();
+        document.createRootElement(this.nodeName, null, null)
+                .addTextNode(this.content);
+        return document;
     }
 }

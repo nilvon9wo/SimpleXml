@@ -1,8 +1,8 @@
-public class SXML_ElementSimpleNode implements SXML_SimpleNodeIntf {
+public class SXML_ElementSimpleNode implements SXML_SimpleNodeBuilderIntf, SXML_SimpleDocumentBuilderIntf {
     String nodeName;
-    SXML_SimpleNodeIntf content;
+    SXML_SimpleNodeBuilderIntf content;
 
-    public SXML_ElementSimpleNode(String nodeName, SXML_SimpleNodeIntf content) {
+    public SXML_ElementSimpleNode(String nodeName, SXML_SimpleNodeBuilderIntf content) {
         this.nodeName = nodeName;
         this.content = content;
     }
@@ -14,7 +14,7 @@ public class SXML_ElementSimpleNode implements SXML_SimpleNodeIntf {
         return innerNode;
     }
 
-    public Dom.Document buildDocument() {
+    public Dom.Document toXmlDocument() {
         Dom.Document document = new Dom.Document();
         Dom.XmlNode rootNode = document.createRootElement(this.nodeName, null, null);
         this.content.toXmlNode(rootNode);
